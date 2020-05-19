@@ -1,0 +1,20 @@
+{
+  "name": "Proof_Concept_graphQL",
+  "version": "1.0.0",
+  "description": "We need to rapidly build a Proof of Concept (PoC) api using GraphQL. Currently all of our services are REST based and the FE team has to wait for brand new endpoints from the BE team whenever they need different data. The management team is reluctant to invest engineering time into switching over to GraphQL. However I am confident that once we get our PoC applications up and running rapidly, we will be able to make a quantifiable case to switching over to GraphQL.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halseyjt/Proof_Concept_graphQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/halseyjt/Proof_Concept_graphQL/issues"
+  },
+  "homepage": "https://github.com/halseyjt/Proof_Concept_graphQL#readme"
+}
