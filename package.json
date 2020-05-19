@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/halseyjt/Proof_Concept_graphQL/issues"
   },
-  "homepage": "https://github.com/halseyjt/Proof_Concept_graphQL#readme"
+  "homepage": "https://github.com/halseyjt/Proof_Concept_graphQL#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "graphql": "^15.0.0",
+    "mysql": "^2.18.1",
+    "react": "^16.13.1"
+  }
 }
