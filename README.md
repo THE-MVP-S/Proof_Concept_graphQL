@@ -1,0 +1,2 @@
+# Proof_Concept_graphQL
+We need to rapidly build a Proof of Concept (PoC) api using GraphQL. Currently all of our services are REST based and the FE team has to wait for brand new endpoints from the BE team whenever they need different data. The management team is reluctant to invest engineering time into switching over to GraphQL. However I am confident that once we get our PoC applications up and running rapidly, we will be able to make a quantifiable case to switching over to GraphQL.
