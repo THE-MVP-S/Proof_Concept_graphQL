@@ -34,3 +34,5 @@ CREATE TABLE department (
     sporting_good, TEXT,
 
 )
+
+INSERT INTO employee (first_name, last_name, date, city,  state,  position_id) VALUES ('Ray', 'Dunning', 'May 21st', 'Killeen', 'Texas', 1);
