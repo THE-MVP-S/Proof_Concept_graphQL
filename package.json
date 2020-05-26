@@ -4,12 +4,18 @@
   "description": "We need to rapidly build a Proof of Concept (PoC) api using GraphQL. Currently all of our services are REST based and the FE team has to wait for brand new endpoints from the BE team whenever they need different data. The management team is reluctant to invest engineering time into switching over to GraphQL. However I am confident that once we get our PoC applications up and running rapidly, we will be able to make a quantifiable case to switching over to GraphQL.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/express.js"
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/halseyjt/Proof_Concept_graphQL.git"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -25,5 +31,9 @@
     "knex": "^0.21.1",
     "mysql": "^2.18.1",
     "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "jest": "^26.0.1"
   }
 }

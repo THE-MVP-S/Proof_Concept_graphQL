@@ -1,16 +1,10 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
+const app = express();
 
-// const knex = require('knex')({
-//   client: 'mysql',
-//   connection: {
-//     host : process.env.DB_HOST,
-//     user : process.env.DB_USER,
-//     password : process.env.DB_PASSWORD,
-//     database : process.env.DB_NAME
-//   }
-// });
+app.use(express.json());
+
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
   type Query {
@@ -27,11 +21,12 @@ const root = {
     return 'martin';
   }
 };
-const app = express();
+
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
   graphiql: true,
+  pretty: true
 }));
-app.listen(4000);
-console.log('Running a GraphQL API server at http://localhost:4000/graphql');
+
+module.exports = app;
