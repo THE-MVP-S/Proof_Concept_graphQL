@@ -1,26 +1,35 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
-require('.envDOT')
+const app = express();
+const knex = require('../database/knexfile');
 
+app.use(express.json());
 
-const knex = require('knex')({
-  client: 'mysql',
-  connection: {
-    host : process.env.DB_HOST,
-    user : process.env.DB_USER,
-    password : process.env.DB_PASSWORD,
-    database : process.env.DB_NAME
-  }
-});
-
-
+// start database connection
+knex.raw("SELECT VERSION()")
+  .then((version) => console.log((version[0][0])))
+  .catch((err) => { console.log(err); throw err })
+  .finally(() => {
+        knex.destroy();
+    });
 
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
-  type Query {
-    hello: String,
-    name: String,
+  type Employee {
+    first_name: String,
+    last_name: String,
+    start_date: String,
+    city: String,
+    state: String,
+    
+  }
+
+  type Position {
+    title: String,
+    department: String,
+    description: String,
+
   }
 `);
 // The root provides a resolver function for each API endpoint
@@ -30,13 +39,26 @@ const root = {
   },
   name: () => {
     return 'martin';
-  }
+  },
+  // employee: (root, args, context, info) => {
+  //   return knex.from('cars').select(args)
+  //     .then((rows) => {
+  //       for (row of rows) {
+  //         console.log(`${row['id']} ${row['name']} ${row['price']}`);
+  //       }
+  //     })
+  //     .catch((err) => { console.log(err); throw err })
+  //     .finally(() => {
+  //       knex.destroy();
+  //     });
+  // }
 };
-const app = express();
+
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
   graphiql: true,
+  pretty: true
 }));
-app.listen(4000);
-console.log('Running a GraphQL API server at http://localhost:4000/graphql');
+
+module.exports = app;
