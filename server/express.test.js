@@ -1,9 +1,9 @@
 const request = require('supertest')
-const app = require('../server')
+const app = require('../server/index')
 describe('Post Endpoints', () => {
     it('should create a new post', async () => {
         const res = await request(app)
-            .post('/api/posts')
+            .post('/graphql')
             .send({
                 userId: 1,
                 title: 'test is cool',
