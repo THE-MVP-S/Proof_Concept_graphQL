@@ -22,10 +22,13 @@ knex.schema.createTable('employee', (table) => {
     table.integer('position_id')
 })
     .then(() => console.log("table created"))
-    .catch((err) => { console.log(err); throw err });
-// .finally(() => {
-//     knex.destroy();
-// });
+        .catch((err) => {
+            console.log(err);
+            throw err
+        });
+    // .finally(() => {
+    //     knex.destroy();
+    // });
 
 knex.schema.createTable('position', (table) => {
     table.increments('id')
@@ -61,12 +64,12 @@ const employees = [
     { first_name: 'Josh', last_name: 'Halsey', date: '2020-05-06', city: 'Killeen', state: 'Texas', position_id: 5 }
 ]
 
-knex('employee').insert(employees)
-    .then(() => console.log("data inserted"))
-    .catch((err) => { console.log(err); throw err });
-//     .finally(() => {
-//     knex.destroy();
-// });
+// knex('employee').insert(employees)
+//     .then(() => console.log("data inserted"))
+//     .catch((err) => { console.log(err); throw err });
+// //     .finally(() => {
+// //     knex.destroy();
+//  });
 
 
 
