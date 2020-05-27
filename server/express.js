@@ -22,7 +22,7 @@ const schema = buildSchema(`
     start_date: String,
     city: String,
     state: String,
-    
+    position_id: ID, 
   }
 
   type Position {
@@ -40,18 +40,18 @@ const root = {
   name: () => {
     return 'martin';
   },
-  // employee: (root, args, context, info) => {
-  //   return knex.from('cars').select(args)
-  //     .then((rows) => {
-  //       for (row of rows) {
-  //         console.log(`${row['id']} ${row['name']} ${row['price']}`);
-  //       }
-  //     })
-  //     .catch((err) => { console.log(err); throw err })
-  //     .finally(() => {
-  //       knex.destroy();
-  //     });
-  // }
+  employee: (root, args, context, info) => {
+    return knex.from('cars').select(args)
+      .then((rows) => {
+        for (row of rows) {
+          console.log(`${row['id']} ${row['name']} ${row['price']}`);
+        }
+      })
+      .catch((err) => { console.log(err); throw err })
+      .finally(() => {
+        knex.destroy();
+      });
+  }
 };
 
 app.use('/graphql', graphqlHTTP({

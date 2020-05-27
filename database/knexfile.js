@@ -28,6 +28,7 @@ knex.schema.createTable('employee', (table) => {
 //     knex.destroy();
 // });
 
+
 knex.schema.createTable('position', (table) => {
     table.increments('id')
     table.string('title')
@@ -88,7 +89,7 @@ knex('position').insert(position)
 // });
 
 const department = [
-    {department_id: 1},
+    {department_id: 1 },
     {department_id: 2 },
     {department_id: 3 },
 ]
