@@ -43,9 +43,10 @@ knex.schema.createTable('position', (table) => {
     //     knex.destroy();
     // });
 
-knex.schema.createTable('department', (table) => {
+knex.schema.createTable('departments', (table) => {
     table.increments('id')
     table.integer('department_id')
+    table.string('department')
     // table.integer('department_id')
     // table.integer('department_id')
 })
@@ -65,7 +66,7 @@ knex.schema.createTable('department', (table) => {
         { first_name: 'Josh', last_name: 'Halsey', date: '2020-05-06', city: 'Killeen', state: 'Texas', department_id: 1}
     ]
     knex('employee').insert(employee)
-.then(() => console.log("data inserted"))
+.then(() => console.log("data inserted for employee"))
 .catch((err) => { console.log(err); throw err });
 //     .finally(() => {
 //     knex.destroy();
@@ -82,21 +83,21 @@ const position = [
 ]
 
 knex('position').insert(position)
-    .then(() => console.log("data inserted"))
+    .then(() => console.log("data inserted for position"))
     .catch((err) => { console.log(err); throw err });
 //     .finally(() => {
 //     knex.destroy();
 // });
 
-const department = [
-    {department_id: 1 },
-    {department_id: 2 },
-    {department_id: 3 },
+const departments = [
+    {department:'electronics', department_id: 1 },
+    {department:'automotive', department_id: 2 },
+    {department:'sporting goods', department_id: 3 },
 ]
 
 
-knex('department').insert(department)
-    .then(() => console.log("data inserted"))
+knex('departments').insert(departments)
+    .then(() => console.log("data inserted for departments"))
     .catch((err) => { console.log(err); throw err });
 //     .finally(() => {
 //     knex.destroy();

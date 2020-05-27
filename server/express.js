@@ -1,10 +1,8 @@
 const express = require('express');
-const graphqlHTTP = require('express-graphql');
-const { buildSchema } = require('graphql');
-const app = express();
 const knex = require('../database/knexfile');
-
-app.use(express.json());
+const db = require("./db");
+const { ApolloServer, gql } = require("apollo-server-express");
+const app = express();
 
 // start database connection
 knex.raw("SELECT VERSION()")
@@ -14,51 +12,21 @@ knex.raw("SELECT VERSION()")
         knex.destroy();
     });
 
-// Construct a schema, using GraphQL schema language
-const schema = buildSchema(`
-  type Employee {
-    first_name: String,
-    last_name: String,
-    start_date: String,
-    city: String,
-    state: String,
-    position_id: ID, 
-  }
+// import graphql schema and resolvers
+const fs = require('fs')
+const typeDefs = gql(fs.readFileSync('./schema.graphql',{encoding:'utf-8'}))
+const resolvers = require('./resolvers')
 
-  type Position {
-    title: String,
-    department: String,
-    description: String,
 
-  }
-`);
-// The root provides a resolver function for each API endpoint
-const root = {
-  hello: () => {
-    return 'Hello World!';
-  },
-  name: () => {
-    return 'martin';
-  },
-  employee: (root, args, context, info) => {
-    return knex.from('cars').select(args)
-      .then((rows) => {
-        for (row of rows) {
-          console.log(`${row['id']} ${row['name']} ${row['price']}`);
-        }
-      })
-      .catch((err) => { console.log(err); throw err })
-      .finally(() => {
-        knex.destroy();
-      });
-  }
-};
 
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
-  graphiql: true,
-  pretty: true
-}));
+// connect using apollo-server-express
+const server = new ApolloServer({ 
+                                  typeDefs, 
+                                  resolvers,
+                                  playground: true,
+                                  introspection: true
+                                 });
+server.applyMiddleware({ app });
+
 
 module.exports = app;
