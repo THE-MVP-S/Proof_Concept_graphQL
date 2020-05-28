@@ -1,21 +1,28 @@
-#type Query {
- # test: String
-  #employees: [Employee]
-  #employeeByName(firstName: String!, lastName: String!): Employee
-#}
-
-type Mutation {
-  add_employee(firstName: String!, lastName:String!, date: String, city: City, state: State): Employee
-  createStudent(collegeId:ID,firstName:String,lastName:String):String
+type Query {
+  # READ routes
+  test: String
+  # get list of all employees in org
+  employees: [Employee]
+  # get list of employee by name
+  employeeByName(firstName: String!, lastName: String!): Employee
+  # get employess by ID
+  employeeByID(id:ID) : Employee
+  # get list of all positions
+  position: [Position]
+  # get list of departments
+  department: [Department]
 }
 
+
+
 type Employee {
+    id: ID
     firstName: String!
     lastName: String!
     fullName: String
     date: String
-    city: [City]
-    state: [State]
+    city: City
+    state: State
     position: Position
 }
 
@@ -35,32 +42,10 @@ type Position {
     title: String
     description: String
     salary: Int
-    department: [Department]
+    department: Department
 }
 
-enum Department {
-  AUTOMOTIVE
-  SPORTING GOODS
-}
-
-type Query {
-  greeting: String
-  students: [Student]
-  studentById(id: ID!): Student
-  sayHello(name:String!):String
-}
-
-type College {
-  id: ID!
-  name: String
-  location: String
-  rating: Float
-}
-
-type Student {
-  id: ID!
-  firstName: String
-  lastName: String
-  fullName: String
-  college: College
+type Department {
+    id: ID
+    departmentName: String
 }
