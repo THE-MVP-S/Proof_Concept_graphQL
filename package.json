@@ -6,11 +6,11 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
     "start": "node server/index.js",
-    "start-dev": "nodemon server/index.js"
+    "dev-env": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/halseyjt/Proof_Concept_graphQL.git"
+    "url": "git+https://github.com/THE-MVP-S/Proof_Concept_graphQL.git"
   },
   "jest": {
     "testEnvironment": "node",
@@ -22,9 +22,15 @@
     "knexjs",
     "mysql",
     "express",
-    "graphQL"
+    "graphQL",
+    "apollo-server-express",
+    "jest",
+    "testing",
+    "routes",
+    "API",
+    "DBMS"
   ],
-  "author": "",
+  "author": "Zach Yusuf, Josh Halsey, Ray Dunning, Martin Ramos, Aaron Evans",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/halseyjt/Proof_Concept_graphQL/issues"
@@ -32,13 +38,8 @@
   "homepage": "https://github.com/halseyjt/Proof_Concept_graphQL#readme",
   "dependencies": {
     "apollo-server-express": "^2.13.1",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-graphql": "^0.9.0",
-    "graphql": "^15.0.0",
-    "graphql-tools": "^6.0.1",
     "knex": "^0.21.1",
     "mysql": "^2.18.1",
     "notarealdb": "^0.2.2",

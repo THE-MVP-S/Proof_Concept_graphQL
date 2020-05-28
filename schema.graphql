@@ -1,3 +1,66 @@
+#type Query {
+ # test: String
+  #employees: [Employee]
+  #employeeByName(firstName: String!, lastName: String!): Employee
+#}
+
+type Mutation {
+  add_employee(firstName: String!, lastName:String!, date: String, city: City, state: State): Employee
+  createStudent(collegeId:ID,firstName:String,lastName:String):String
+}
+
+type Employee {
+    firstName: String!
+    lastName: String!
+    fullName: String
+    date: String
+    city: [City]
+    state: [State]
+    position: Position
+}
+
+enum City {
+  AUSTIN
+  HOUSTON
+  LOS ANGELES
+}
+
+enum State {
+  TEXAS
+  CALIFORNIA
+}
+
+type Position {
+    id: ID
+    title: String
+    description: String
+    salary: Int
+    department: [Department]
+}
+
+enum Department {
+  AUTOMOTIVE
+  SPORTING GOODS
+}
+
 type Query {
-  test: String
+  greeting: String
+  students: [Student]
+  studentById(id: ID!): Student
+  sayHello(name:String!):String
+}
+
+type College {
+  id: ID!
+  name: String
+  location: String
+  rating: Float
+}
+
+type Student {
+  id: ID!
+  firstName: String
+  lastName: String
+  fullName: String
+  college: College
 }
