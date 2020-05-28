@@ -1,4 +1,6 @@
 // Create connection
+
+
 const knex = require('knex')({
     client: 'mysql',
     connection: {
@@ -9,6 +11,16 @@ const knex = require('knex')({
         database: process.env.DB_NAME
     }
 });
+
+// // exports.up = async function(knex, Promise) {
+// // await knex.('CREATE DATABASE mvps;')
+// //   .then(function() {
+// //     return knex.raw('DROP DATABASE mvps;')
+// //   })
+// //   .finally(function () {
+// //     console.log("Done");
+// //   });
+// }
 
 // CREATE TABLE
 
@@ -24,9 +36,7 @@ knex.schema.createTable('employee', (table) => {
 })
     .then(() => console.log("table created"))
     .catch((err) => { console.log(err); throw err });
-// .finally(() => {
-//     knex.destroy();
-// });
+
 
 
 knex.schema.createTable('position', (table) => {
@@ -39,9 +49,7 @@ knex.schema.createTable('position', (table) => {
 })
     .then(() => console.log("table created"))
     .catch((err) => { console.log(err); throw err })
-    // .finally(() => {
-    //     knex.destroy();
-    // });
+
 
 knex.schema.createTable('departments', (table) => {
     table.increments('id')
