@@ -6,7 +6,8 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
     "start": "node server/index.js",
-    "dev-env": "nodemon server/index.js"
+    "dev_ENV": "nodemon server/index.js",
+    "seed_DB": "node database/seedfile.js"
   },
   "repository": {
     "type": "git",
