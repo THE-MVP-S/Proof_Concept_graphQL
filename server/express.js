@@ -1,5 +1,5 @@
 const express = require('express');
-const knex = require('../database/knexfile');
+const knex = require('../database/migrations/knexfile');
 const { ApolloServer, gql } = require("apollo-server-express");
 const app = express();
 
