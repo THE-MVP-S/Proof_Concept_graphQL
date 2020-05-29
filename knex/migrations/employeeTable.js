@@ -10,7 +10,7 @@ exports.up = function (knex, Promise) {
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("updated_at").defaultTo(knex.fn.now());
   })
-   .then(() => console.log("table employee created"))
+    .then(() => console.log("employee table created"))
     .catch((err) => {
       console.log(err);
       throw err;
