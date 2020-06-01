@@ -7,9 +7,9 @@ const app = express();
 knex.raw("SELECT VERSION()")
   .then((version) => console.log((version[0][0])))
   .catch((err) => { console.log(err); throw err })
-  .finally(() => {
-        knex.destroy();
-    });
+  // .finally(() => {
+  //       knex.destroy();
+  //   });
 
 // import graphql schema and resolvers
 const fs = require('fs')
