@@ -6,8 +6,10 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
     "start": "node server/index.js",
-    "dev_ENV": "nodemon server/index.js",
-    "seed_DB": "node database/seedfile.js"
+    "startDev": "nodemon server/index.js",
+    "migrateDB": "knex migrate:latest",
+    "seedDB": "knex seed:run",
+    "knex": "knex"
   },
   "repository": {
     "type": "git",
